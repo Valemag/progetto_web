@@ -1,4 +1,4 @@
-.home-container {
+.hero-sec.home-container {
   min-height: 100vh;
   background-color: #fdfbf7;
 }
@@ -80,12 +80,19 @@
 
 .hero-title {
   font-size: 2.5rem;
-  color: #451a03;
+  color: #ef6fc6;
   margin-bottom: 1.5rem;
 }
 
 .btn-primary {
-  background-color: #78350f;
+  background-color: #ff43a1;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.btn-secondary {
+  background-color: #ff43a1;
   color: white;
   padding: 0.75rem 2rem;
   border-radius: 8px;

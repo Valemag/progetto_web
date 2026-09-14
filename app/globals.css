@@ -133,27 +133,33 @@
   height: 250px;
   object-fit: cover;
 }
-
+/* cordinate immagine*/
 .product-info {
   padding: 1.25rem;
   text-align: center;
 }
-
+/*titolo card */
 .product-name {
   font-size: 1.1rem;
-  color: #1c1917;
+  color: #000000;
   margin-bottom: 0.5rem;
 }
-
+/*scritta per le card */
 .product-price {
   font-weight: 600;
-  color: #78350f;
+  color: #020100;
   margin-bottom: 1rem;
 }
 
+/*css della  card*/ 
 .btn-card {
-  width: 100%;
+  display: block;          /* Rende il tag <a> un blocco a larghezza intera */
+  width: 100%;             /* Occupa il 100% dello spazio disponibile nel padre */
+  box-sizing: border-box;  /* Include padding e bordi nel calcolo del 100% */
   background: #f5f5f4;
-  color: #292524;
+  color: #ec64d8;
   border: 1px solid #e7e5e4;
+  text-align: center;      /* Mantiene il testo centrato */
+  padding: 0.75rem 1rem;   /* Aggiunge il giusto spazio interno verticale */
+  border-radius: 6px;      /* Smussa gli angoli */
 }
