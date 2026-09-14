@@ -1,4 +1,4 @@
-import { getProducts, createProduct, deleteProduct } from '@/app/actions/productActions.ts';
+import { getProducts, createProduct, deleteProduct } from '@/app/actions/productActions';
 
 export default async function AdminPage() {
   const products = await getProducts();

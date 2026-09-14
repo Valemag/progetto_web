@@ -1,69 +1,109 @@
-import Image from "next/image";
+import Link from 'next/link';
+import './homepage.css';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <main className="home-container">
+      {/* HEADER CON LOGO */}
+   <header className="site-header">
+  <div className="logo-container">
+    <Link href="/">
+      {/* Metti il file del tuo logo dentro la cartella /public */}
+      <img src="/foto/logo_trasparente.png" 
+      width={200}  /* Aumenta la larghezza (es. da 120 a 200) */
+      height={100} /* Aumenta l'altezza (es. da 60 a 100) */ alt="Logo" className="logo-img" />
+    </Link>
+  </div>
+  <nav className="nav-menu">
+    <Link href="/shop">Shop</Link>
+    <Link href="/admin" aria-label="Pannello Admin">👤</Link>
+  </nav>
+</header>
+
+      {/* HERO SECTION */}
+      <section className="hero-section">
+  {/* CAROSELLO DI SFONDO */}
+  <div className="hero-slider">
+    <div className="hero-slider-track">
+      <img src="/foto/photo_2026-09-14_19-14-26.jpg" alt="Borsa artigianale 1" />
+      <img src="/foto/photo_2026-09-14_19-15-10.jpg" alt="Borsa artigianale 2" />
+      <img src="/foto/photo_2026-09-14_19-15-13.jpg" alt="Borsa artigianale 3" />
+      {/* Duplica le immagini per creare l'effetto infinito senza interruzioni */}
+      <img  src="/foto/photo_2026-09-14_19-14-26.jpg" alt="Borsa artigianale 1" />
+      <img src="/foto/photo_2026-09-14_19-15-10.jpg" alt="Borsa artigianale 2" />
+      <img src="/foto/photo_2026-09-14_19-15-13.jpg" alt="Borsa artigianale 3" />
     </div>
+  </div>
+
+  {/* STRATO SCURO OVERLAY (rende il testo leggibile sulle foto) */}
+  <div className="hero-overlay"></div>
+
+  {/* CONTENUTO TESTUALE */}
+  <div className="hero-content">
+    <span className="hero-subtitle">Creazioni Uniche all'Uncinetto</span>
+    <h1 className="hero-title">Borse Artigianali Fatte a Mano</h1>
+    <p className="hero-description">
+      Ogni borsa è un pezzo unico, realizzato con cura e passione.
+    </p>
+    <div className="hero-buttons">
+      <Link href="/shop" className="btn btn-primary">Esplora la Collezione</Link>
+      <Link href="/admin" className="btn btn-secondary">Pannello Admin</Link>
+    </div>
+  </div>
+</section>
+
+      {/* CAROSELLO IMMAGINI (SCROLL SLIDER) */}
+      <section className="slider-section">
+        <h2 className="section-title">In Vetrina</h2>
+        <div className="slider-container">
+          <div className="slider-track">
+            <div className="slider-item">
+              <img src="https://picsum.photos/600/400?random=1" alt="Borsa in lavorazione" />
+            </div>
+            <div className="slider-item">
+              <img src="https://picsum.photos/600/400?random=2" alt="Dettaglio uncinetto" />
+            </div>
+            <div className="slider-item">
+              <img src="https://picsum.photos/600/400?random=3" alt="Borsa finita" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SCHEDE PRODOTTI */}
+      <section className="products-section">
+        <h2 className="section-title">I Nostri Pezzi Unici</h2>
+        <div className="products-grid">
+          
+          <div className="product-card">
+            <img src="https://picsum.photos/400/400?random=4" alt="Borsa Ambra" className="product-img" />
+            <div className="product-info">
+              <h3 className="product-name">Borsa Ambra</h3>
+              <p className="product-price">€ 45,00</p>
+              <Link href="/shop" className="btn btn-card">Vedi Dettagli</Link>
+            </div>
+          </div>
+
+          <div className="product-card">
+            <img src="https://picsum.photos/400/400?random=5" alt="Borsa Perla" className="product-img" />
+            <div className="product-info">
+              <h3 className="product-name">Borsa Perla</h3>
+              <p className="product-price">€ 55,00</p>
+              <Link href="/shop" className="btn btn-card">Vedi Dettagli</Link>
+            </div>
+          </div>
+
+          <div className="product-card">
+            <img src="https://picsum.photos/400/400?random=6" alt="Borsa Smeraldo" className="product-img" />
+            <div className="product-info">
+              <h3 className="product-name">Borsa Smeraldo</h3>
+              <p className="product-price">€ 60,00</p>
+              <Link href="/shop" className="btn btn-card">Vedi Dettagli</Link>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
   );
 }

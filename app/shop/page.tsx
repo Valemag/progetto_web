@@ -1,4 +1,4 @@
-import { getProducts } from '../actions/productActions';
+import { getProducts } from '@/app/actions/productActions';
 import Image from 'next/image';
 import Link from 'next/link';
 import './shop.css';
@@ -30,7 +30,7 @@ export default async function ShopPage() {
             >
               <div className="relative aspect-square bg-stone-100 overflow-hidden">
                 <img
-                  src={product.image_url || 'https://via.placeholder.com/400'}
+                  src={product.imageUrl || 'https://via.placeholder.com/400'}
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />

@@ -3,39 +3,37 @@
 import { db } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
 
-// Definizione del tipo Prodotto
+// Definizione del tipo Prodotto basato sui campi reali della tabella 'prodotti'
 export type Product = {
   id: number;
   name: string;
-  slug: string;
   description: string;
   price: number;
   stock: number;
-  image_url: string;
-  created_at: Date;
+  imageUrl: string;
 };
 
 // 1. READ (Ottieni tutti i prodotti)
 export async function getProducts(): Promise<Product[]> {
-  const [rows] = await db.query('SELECT * FROM products ORDER BY created_at DESC');
+  const [rows]: any = await db.query(
+    'SELECT Id_Prodotti AS id, Nome AS name, Descrizione AS description, Prezzo AS price, Quantita_magazzino AS stock, Path_immagine AS imageUrl FROM prodotti ORDER BY Id_Prodotti DESC'
+  );
   return rows as Product[];
 }
 
 // 2. CREATE (Aggiungi un nuovo prodotto)
 export async function createProduct(formData: FormData) {
   const name = formData.get('name') as string;
-  const slug = name.toLowerCase().trim().replace(/ /g, '-').replace(/[^\w-]+/g, '');
   const description = formData.get('description') as string;
   const price = parseFloat(formData.get('price') as string);
   const stock = parseInt(formData.get('stock') as string, 10);
   const imageUrl = formData.get('imageUrl') as string;
 
   await db.query(
-    'INSERT INTO products (name, slug, description, price, stock, image_url) VALUES (?, ?, ?, ?, ?, ?)',
-    [name, slug, description, price, stock, imageUrl]
+    'INSERT INTO prodotti (Nome, Descrizione, Prezzo, Path_immagine, Quantita_magazzino) VALUES (?, ?, ?, ?, ?)',
+    [name, description, price, imageUrl, stock]
   );
 
-  // Aggiorna la cache delle pagine per mostrare subito i nuovi dati
   revalidatePath('/admin');
   revalidatePath('/shop');
 }
@@ -49,8 +47,8 @@ export async function updateProduct(id: number, formData: FormData) {
   const imageUrl = formData.get('imageUrl') as string;
 
   await db.query(
-    'UPDATE products SET name = ?, description = ?, price = ?, stock = ?, image_url = ? WHERE id = ?',
-    [name, description, price, stock, imageUrl, id]
+    'UPDATE prodotti SET Nome = ?, Descrizione = ?, Prezzo = ?, Path_immagine = ?, Quantita_magazzino = ? WHERE Id_Prodotti = ?',
+    [name, description, price, imageUrl, stock, id]
   );
 
   revalidatePath('/admin');
@@ -59,7 +57,7 @@ export async function updateProduct(id: number, formData: FormData) {
 
 // 4. DELETE (Elimina un prodotto)
 export async function deleteProduct(id: number) {
-  await db.query('DELETE FROM products WHERE id = ?', [id]);
+  await db.query('DELETE FROM prodotti WHERE Id_Prodotti = ?', [id]);
   
   revalidatePath('/admin');
   revalidatePath('/shop');
