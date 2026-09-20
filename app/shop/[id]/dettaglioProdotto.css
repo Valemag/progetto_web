@@ -1,0 +1,228 @@
+/* Styling Globale della Pagina Dettaglio */
+.pd-wrapper {
+  background-color: #fcf4f2;
+  min-height: 100vh;
+  padding: 40px 20px 80px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #262626;
+}
+
+.pd-container {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* Breadcrumb */
+.pd-breadcrumb {
+  font-size: 13px;
+  color: #8c8583;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pd-breadcrumb a {
+  color: #8c8583;
+  text-decoration: none;
+}
+
+.pd-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.pd-breadcrumb .current {
+  color: #262626;
+}
+
+/* Layout Griglia */
+.pd-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .pd-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+/* Colonna Immagine */
+.pd-main-img {
+  width: 100%;
+  height: auto;
+  max-height: 620px;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+}
+
+/* Colonna Informazioni */
+.pd-info-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.pd-badge {
+  align-self: flex-start;
+  background-color: #ec719c;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.pd-title {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+/* Prezzo */
+.pd-price-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.pd-price-discount {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ec719c;
+}
+
+.pd-price-original {
+  font-size: 14px;
+  color: #8c8583;
+  text-decoration: line-through;
+}
+
+/* Etichette Opzioni */
+.pd-option-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #524d4b;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+/* Varianti */
+.pd-option-section {
+  margin-bottom: 20px;
+}
+
+.pd-ring-options {
+  display: flex;
+  gap: 10px;
+}
+
+.pd-btn-option {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid #e0d7d5;
+  background-color: transparent;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pd-btn-option.active {
+  background-color: #262626;
+  color: #ffffff;
+  border-color: #262626;
+}
+
+/* Selettore Quantità */
+.pd-quantity-section {
+  margin-bottom: 24px;
+}
+
+.pd-quantity-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid #e0d7d5;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 14px;
+}
+
+.pd-quantity-selector button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #524d4b;
+  cursor: pointer;
+}
+
+/* Pulsante Add to Cart */
+.pd-add-to-cart {
+  width: 100%;
+  background-color: #ec719c;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  padding: 16px 0;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 32px;
+}
+
+.pd-add-to-cart:hover {
+  background-color: #d95d88;
+}
+
+/* Accordion */
+.pd-accordion-list {
+  border-top: 1px solid #e0d7d5;
+}
+
+.pd-accordion-item {
+  border-bottom: 1px solid #e0d7d5;
+}
+
+.pd-accordion-header {
+  padding: 16px 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+.pd-accordion-header::-webkit-details-marker {
+  display: none;
+}
+
+.pd-accordion-header .icon::after {
+  content: "+";
+  font-size: 18px;
+  color: #ec719c;
+}
+
+.pd-accordion-item[open] .pd-accordion-header .icon::after {
+  content: "–";
+}
+
+.pd-accordion-content {
+  padding-bottom: 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #66605e;
+}

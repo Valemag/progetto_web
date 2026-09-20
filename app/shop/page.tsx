@@ -1,59 +1,67 @@
 import { getProducts } from '@/app/actions/productActions';
-import Image from 'next/image';
-import Link from 'next/link';
+import Link from 'next/link'; // <--- Mancava questa importazione!
 import './shop.css';
 
 export default async function ShopPage() {
   const products = await getProducts();
 
   return (
-    <main className="max-w-6xl mx-auto px-4 py-12 font-sans">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-serif text-amber-950 tracking-wide mb-3">
-          Collezione Borse Fatte a Mano
-        </h1>
-        <p className="text-stone-600 max-w-md mx-auto text-sm">
+    <main className="shop-container">
+      {/* HEADER IN CIMA ALLA PAGINA */}
+      <header className="site-header">
+        <div className="logo-container">
+          <Link href="/">
+            <img 
+              src="/foto/logo_trasparente.png" 
+              width={200}
+              height={100}
+              alt="Logo" 
+              className="logo-img" 
+            />
+          </Link>
+        </div>
+        <nav className="nav-menu">
+          <Link href="/shop">Shop</Link>
+          <Link href="/login" aria-label="login ">👤</Link>
+        </nav>
+      </header>
+    
+      {/* INTESTAZIONE SPECIFICA DELLA PAGINA */}
+      <div className="shop-header">
+        <h1 className="shop-title">Borse </h1>
+        <p className="shop-description">
           Ogni pezzo è unico, realizzato interamente a mano all'uncinetto con filati di alta qualità.
         </p>
       </div>
 
+      {/* GESTIONE STATO VUOTO / GRIGLIA PRODOTTI */}
       {products.length === 0 ? (
-        <p className="text-center text-stone-500 py-12 font-light">
+        <p style={{ textAlign: 'center', color: '#78716c', padding: '3rem 0' }}>
           Nessun prodotto disponibile al momento. Torna a trovarci presto!
         </p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="shop-grid">
           {products.map((product) => (
-            <div 
-              key={product.id} 
-              className="group bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="relative aspect-square bg-stone-100 overflow-hidden">
+            <div key={product.id} className="shop-card">
+              <div className="shop-img-wrapper">
                 <img
-                  src={product.imageUrl || 'https://via.placeholder.com/400'}
+                  src={product.imageUrl || '/placeholder.jpg'}
                   alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="shop-card-img"
                 />
               </div>
 
-              <div className="p-5 flex flex-col justify-between">
-                <div>
-                  <h2 className="font-serif text-lg text-stone-900 group-hover:text-amber-900 transition-colors">
-                    {product.name}
-                  </h2>
-                  <p className="text-stone-500 text-xs mt-1 line-clamp-2">
-                    {product.description || 'Nessuna descrizione disponibile.'}
-                  </p>
-                </div>
+              <div className="shop-card-info">
+                <h3 className="shop-card-title">{product.name}</h3>
 
-                <div className="mt-4 flex items-center justify-between border-t border-stone-100 pt-3">
-                  <span className="font-semibold text-stone-900">
-                    €{Number(product.price).toFixed(2)}
-                  </span>
-                  <button className="bg-amber-900/90 text-white text-xs px-3 py-2 rounded-lg font-medium hover:bg-amber-950 transition-colors">
-                    Aggiungi al Carrello
-                  </button>
+                <div className="shop-price-box">
+                  <span className="price-discount">€{product.price}</span>
+                 
                 </div>
+                <Link href={`/shop/${product.id}`} className="shop-card-link">
+                  <button className="btn-negozio">vedi dettagli </button>
+                </Link>
+               
               </div>
             </div>
           ))}

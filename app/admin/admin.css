@@ -1,0 +1,256 @@
+/* Layout e contenitore principale */
+.admin-container {
+  max-width: 64rem; /* 1024px */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.admin-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #262626;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #44403c;
+}
+
+/* Card generica */
+.card {
+  border: 1px solid #e7e5e4;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.form-section {
+  background-color: #fafaf9;
+  margin-bottom: 2.5rem;
+}
+
+/* Griglie */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .full-width {
+    grid-column: span 2 / span 2;
+  }
+}
+
+.edit-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .edit-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .edit-grid-large {
+    grid-column: span 2 / span 2;
+  }
+}
+
+/* Form ed elementi di input */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: #57534e;
+}
+
+.form-label-sm {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #78716c;
+  margin-bottom: 0.25rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d6d3d1;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #78350f;
+  box-shadow: 0 0 0 2px rgba(120, 53, 15, 0.2);
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.form-file-input {
+  width: 100%;
+  padding: 0.375rem;
+  border: 1px solid #d6d3d1;
+  border-radius: 0.25rem;
+  background-color: #ffffff;
+  font-size: 0.875rem;
+  color: #57534e;
+  box-sizing: border-box;
+}
+
+.file-input-sm {
+  font-size: 0.75rem;
+  color: #57534e;
+}
+
+.file-input-sm::file-selector-button {
+  margin-right: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  font-size: 0.75rem;
+  background-color: #f5f5f4;
+  color: #44403c;
+  cursor: pointer;
+}
+
+.file-input-sm::file-selector-button:hover {
+  background-color: #e7e5e4;
+}
+
+/* Pulsanti */
+.btn {
+  padding: 0.625rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 0.875rem;
+}
+
+.btn-primary {
+  background-color: #292524;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #44403c;
+}
+
+.btn-amber {
+  background-color: #78350f;
+  color: #ffffff;
+  padding: 0.375rem 1rem;
+}
+
+.btn-amber:hover {
+  background-color: #451a03;
+}
+
+.btn-danger {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  padding: 0.375rem 0.75rem;
+}
+
+.btn-danger:hover {
+  background-color: #fee2e2;
+}
+
+/* Lista e struttura card prodotto */
+.empty-message {
+  color: #78716c;
+  font-style: italic;
+}
+
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.product-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #f5f5f4;
+}
+
+@media (min-width: 768px) {
+  .product-footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.image-field-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.product-thumbnail {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border-radius: 0.25rem;
+  border: 1px solid #e7e5e4;
+}
+
+.actions-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+  .actions-group {
+    width: auto;
+  }
+}
+
+.delete-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
