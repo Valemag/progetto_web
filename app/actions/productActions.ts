@@ -12,7 +12,6 @@ export type Product = {
   name: string;
   description: string;
   price: number;
-  stock: number;
   imageUrl: string;
 };
 export async function addToCart(id_prodotto: number, colore: string, quantita: number) {
@@ -78,7 +77,7 @@ async function saveUploadedFile(file: File): Promise<string | null> {
 // 5. READ SINGLE PRODUCT (Dettaglio prodotto)
 export async function getProductById(id: number): Promise<Product | null> {
   const [rows]: any = await db.query(
-    'SELECT Id_Prodotti AS id, Nome AS name, Descrizione AS description, Prezzo AS price, Quantita_magazzino AS stock, Path_immagine AS imageUrl FROM prodotti WHERE Id_Prodotti = ?',
+    'SELECT Id_Prodotti AS id, Nome AS name, Descrizione AS description, Prezzo AS price, Path_immagine AS imageUrl FROM prodotti WHERE Id_Prodotti = ?',
     [id]
   );
   return rows.length > 0 ? (rows[0] as Product) : null;
@@ -87,7 +86,7 @@ export async function getProductById(id: number): Promise<Product | null> {
 // 1. READ
 export async function getProducts(): Promise<Product[]> {
   const [rows]: any = await db.query(
-    'SELECT Id_Prodotti AS id, Nome AS name, Descrizione AS description, Prezzo AS price, Quantita_magazzino AS stock, Path_immagine AS imageUrl FROM prodotti ORDER BY Id_Prodotti DESC'
+    'SELECT Id_Prodotti AS id, Nome AS name, Descrizione AS description, Prezzo AS price, Path_immagine AS imageUrl FROM prodotti ORDER BY Id_Prodotti DESC'
   );
   return rows as Product[];
 }
@@ -97,7 +96,6 @@ export async function createProduct(formData: FormData) {
   const name = formData.get('name') as string;
   const description = formData.get('description') as string;
   const price = parseFloat(formData.get('price') as string);
-  const stock = parseInt(formData.get('stock') as string, 10);
   const imageFile = formData.get('imageFile') as File;
 
   const uploadedPath = await saveUploadedFile(imageFile);

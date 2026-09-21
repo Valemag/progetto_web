@@ -40,6 +40,9 @@ export default async function HomePage() {
           <Link href="/shop">Shop</Link>
           
           {/* Se l'utente è loggato mostra il nome ed il link al profilo, altrimenti l'icona login */}
+          {user && user.role!== 'admin' && (
+            <Link href="/cart" aria-label="carrello">🛒</Link>
+          )}
           {user ? (
             <Link href={user.role === 'admin' ? '/admin' : '/profile'} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               👤 <span>{user.name}</span>
